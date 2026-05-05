@@ -2,8 +2,8 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // enables static export
-  basePath: '/portfolio', // replace with your repo name
-  assetPrefix: '/portfolio/',
+  basePath: '/Developer-Portfolio', // replace with your repo name
+  assetPrefix: '/Developer-Portfolio/', // ensures assets are loaded from the correct path
   typescript: {
     ignoreBuildErrors: true,
   },
