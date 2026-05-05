@@ -17,17 +17,17 @@ const FormSchema = z.object({
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
 
-    const validated = FormSchema.safeParse({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
-    });
+    const validated = FormSchema.safeParse(formData);
 
     if (!validated.success) {
       const fieldErrors = validated.error.flatten().fieldErrors;
@@ -40,16 +40,15 @@ export default function ContactSection() {
       return;
     }
 
-    // Send to Formspree (replace with your actual endpoint)
     const response = await fetch('https://formspree.io/f/mjglwopa', {
       method: 'POST',
-      body: formData,
-      headers: { Accept: 'application/json' },
+      body: JSON.stringify(formData),
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
       toast({ title: 'Success!', description: 'Your message has been sent successfully!' });
-      e.currentTarget.reset();
+      setFormData({ name: '', email: '', message: '' }); // ✅ clears inputs
       setErrors({});
     } else {
       toast({ variant: 'destructive', title: 'Error', description: 'Something went wrong. Please try again.' });
@@ -76,24 +75,24 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="Your Name" />
+                <Input id="name" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} />
                 {errors.name && <p className="text-sm font-medium text-destructive">{errors.name}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="your@email.com" />
+                <Input id="email" name="email" type="email" placeholder="your@email.com" value={formData.email} onChange={handleChange} />
                 {errors.email && <p className="text-sm font-medium text-destructive">{errors.email}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" />
+                <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" value={formData.message} onChange={handleChange} />
                 {errors.message && <p className="text-sm font-medium text-destructive">{errors.message}</p>}
               </div>
 
-              {/* Honeypot field (hidden from users, catches bots) */}
+              {/* Honeypot field */}
               <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
-              {/* CAPTCHA field (Formspree will enforce if enabled in dashboard) */}
+              {/* CAPTCHA field */}
               <input type="hidden" name="_captcha" value="true" />
 
               <Button type="submit" className="w-full">Send Message</Button>

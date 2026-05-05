@@ -4,6 +4,9 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Roshan',
+  icons: {
+    icon: '/favicon.ico',
+  },
   description: 'A portfolio by a Multidisciplinary Developer',
 };
 
