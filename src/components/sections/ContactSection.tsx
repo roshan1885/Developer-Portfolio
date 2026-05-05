@@ -1,48 +1,60 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
-import { useActionState, useEffect, useRef } from 'react';
-import { sendMessage, type FormState } from '@/lib/actions';
+import { useState } from 'react';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
-    </Button>
-  );
-}
+const FormSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+});
 
 export default function ContactSection() {
-  const initialState: FormState = { message: '', success: false };
-  const [state, formAction] = useActionState(sendMessage, initialState);
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        toast({
-          title: 'Success!',
-          description: state.message,
-        });
-        formRef.current?.reset();
-      } else {
-        toast({
-          variant: 'destructive',
-          title: 'Error',
-          description: state.message,
-        });
-      }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const validated = FormSchema.safeParse({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    });
+
+    if (!validated.success) {
+      const fieldErrors = validated.error.flatten().fieldErrors;
+      setErrors({
+        name: fieldErrors.name?.[0] || '',
+        email: fieldErrors.email?.[0] || '',
+        message: fieldErrors.message?.[0] || '',
+      });
+      toast({ variant: 'destructive', title: 'Error', description: 'Please correct the errors below.' });
+      return;
     }
-  }, [state, toast]);
+
+    // Send to Formspree (replace with your actual endpoint)
+    const response = await fetch('https://formspree.io/f/mjglwopa', {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      toast({ title: 'Success!', description: 'Your message has been sent successfully!' });
+      e.currentTarget.reset();
+      setErrors({});
+    } else {
+      toast({ variant: 'destructive', title: 'Error', description: 'Something went wrong. Please try again.' });
+    }
+  };
 
   return (
     <section id="contact" className="w-full py-12 md:py-24">
@@ -61,23 +73,30 @@ export default function ContactSection() {
             <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form ref={formRef} action={formAction} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input id="name" name="name" placeholder="Your Name" />
-                {state.errors?.name && <p className="text-sm font-medium text-destructive">{state.errors.name[0]}</p>}
+                {errors.name && <p className="text-sm font-medium text-destructive">{errors.name}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" name="email" type="email" placeholder="your@email.com" />
-                {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email[0]}</p>}
+                {errors.email && <p className="text-sm font-medium text-destructive">{errors.email}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
                 <Textarea id="message" name="message" placeholder="Your message..." className="min-h-[120px]" />
-                {state.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message[0]}</p>}
+                {errors.message && <p className="text-sm font-medium text-destructive">{errors.message}</p>}
               </div>
-              <SubmitButton />
+
+              {/* Honeypot field (hidden from users, catches bots) */}
+              <input type="text" name="_gotcha" style={{ display: 'none' }} />
+
+              {/* CAPTCHA field (Formspree will enforce if enabled in dashboard) */}
+              <input type="hidden" name="_captcha" value="true" />
+
+              <Button type="submit" className="w-full">Send Message</Button>
             </form>
           </CardContent>
         </Card>
