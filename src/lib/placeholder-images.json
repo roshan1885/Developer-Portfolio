@@ -1,0 +1,34 @@
+{
+  "placeholderImages": [
+    {
+      "id": "profile-picture",
+      "description": "A portrait of the developer",
+      "imageUrl": "https://avatars.githubusercontent.com/u/81822450?v=4",
+      "imageHint": "profile portrait"
+    },
+    {
+      "id": "project-1",
+      "description": "Abstract visualization of a web application",
+      "imageUrl": "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMHRlY2h8ZW58MHx8fHwxNzU5Nzc4MTM1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract tech"
+    },
+    {
+      "id": "project-2",
+      "description": "Dashboard UI for a data analytics platform",
+      "imageUrl": "https://picsum.photos/seed/project-two/600/400",
+      "imageHint": "dashboard ui"
+    },
+    {
+      "id": "project-3",
+      "description": "E-commerce store with a clean layout",
+      "imageUrl": "https://picsum.photos/seed/project-three/600/400",
+      "imageHint": "ecommerce website"
+    },
+    {
+      "id": "project-4",
+      "description": "Mobile application interface",
+      "imageUrl": "https://picsum.photos/seed/project-four/600/400",
+      "imageHint": "mobile app"
+    }
+  ]
+}

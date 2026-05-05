@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 30% 18%; /* #1E293B */
+    --foreground: 0 0% 98%;
+    --card: 215 28% 23%;
+    --card-foreground: 0 0% 98%;
+    --popover: 215 30% 18%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 215 16% 68%; /* #94A3B4 */
+    --primary-foreground: 215 30% 11%;
+    --secondary: 215 28% 23%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 28% 23%;
+    --muted-foreground: 215 5% 53%;
+    --accent: 267 92% 66%; /* #A855F7 */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 28% 28%;
+    --input: 215 28% 28%;
+    --ring: 267 92% 70%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .menu {
+    --color: hsl(var(--foreground));
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu svg {
+    width: 64px;
+    height: 48px;
+    top: -6px;
+    left: -14px;
+    stroke: var(--color);
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: block;
+    position: absolute;
+  }
+
+  .menu svg path {
+    transition: stroke-dasharray var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s),
+      stroke-dashoffset var(--duration, 0.85s) var(--easing, ease) var(--delay, 0s);
+    stroke-dasharray: var(--array-1, 26px) var(--array-2, 100px);
+    stroke-dashoffset: var(--offset, 126px);
+    transform: translateZ(0);
+  }
+
+  .menu svg path:nth-child(2) {
+    --duration: 0.7s;
+    --easing: ease-in;
+    --offset: 100px;
+    --array-2: 74px;
+  }
+
+  .menu svg path:nth-child(3) {
+    --offset: 133px;
+    --array-2: 107px;
+  }
+
+  .menu.active svg path {
+    --offset: 57px;
+  }
+
+  .menu.active svg path:nth-child(1),
+  .menu.active svg path:nth-child(3) {
+    --delay: 0.15s;
+    --easing: cubic-bezier(0.2, 0.4, 0.2, 1.1);
+  }
+
+  .menu.active svg path:nth-child(2) {
+    --duration: 0.4s;
+    --offset: 2px;
+    --array-1: 1px;
+  }
+
+  .menu.active svg path:nth-child(3) {
+    --offset: 58px;
+  }
+}
