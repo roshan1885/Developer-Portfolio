@@ -3,8 +3,8 @@ import { Button } from './ui/button';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/roshan1885', 'aria-label': 'GitHub' },
-  { icon: Linkedin, href: '#', 'aria-label': 'LinkedIn' },
-  { icon: X, href: '#', 'aria-label': 'X/Twitter' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/roshanb08', 'aria-label': 'LinkedIn' },
+  { icon: X, href: 'https://x.com/roshan_b08', 'aria-label': 'X/Twitter' },
   { icon: Mail, href: 'mailto:contact@roshan.is-a.dev', 'aria-label': 'Email' },
 ];
 
