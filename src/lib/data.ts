@@ -31,7 +31,12 @@ export const projects: Project[] = [
     title: 'Alt Preventor',
     description: 'An advanced handler which will detect, manage and prevent alt accounts on platforms, ensuring a secure and authentic user experience.',
     techStack: ['React', 'Node.js', 'PostgreSQL', 'Redis'],
-    image: getImage('alt-preventor'),
+    image: {
+      id: "alt-preventor",
+      description: "Alternate Account Prevention",
+      imageUrl: "https://cdn.postimage.me/2026/09/26/Manual-Ecommerce.png",
+      imageHint: "dashboard ui"
+    },
     liveUrl: '#',
     githubUrl: '#',
   },
@@ -40,7 +45,12 @@ export const projects: Project[] = [
     title: 'Manual Ecommerce',
     description: 'A modern Ecommerce website, specially for those who does not want a payment gateway',
     techStack: ["PostgreSQL", "TypeScript"],
-    image: getImage('manual-ecommerce'),
+    image: {
+      id: "manual-ecommerce",
+      description: "E-commerce store with a clean layout",
+      imageUrl: "https://cdn.postimage.me/2026/09/26/Alt-Preventor.png",
+      imageHint: "ecommerce website"
+    },
     liveUrl: 'https://manual-ecommerce.vercel.app',
     githubUrl: 'https://github.com/roshan1885/Manual-Ecommerce',
   },
@@ -49,7 +59,12 @@ export const projects: Project[] = [
     title: 'FreeWH',
     description: 'A quick and advanced to use web hosting platform that allows users to deploy their websites with just a few clicks, providing a seamless experience for both beginners and experienced developers.',
     techStack: ["PHP", "MySQL", "Docker", "Nginx", "NodeJS", "WHMCS"],
-    image: getImage('freewh'),
+    image: {
+      id: "freewh",
+      description: "Free Webhosting Provider site",
+      imageUrl: "https://cdn.postimage.me/2026/09/26/FreeWH.png",
+      imageHint: "Web Servers"
+    },
     liveUrl: 'https://freewh.in.eu.org',
     githubUrl: '#',
   },
