@@ -7,22 +7,22 @@
       "imageHint": "profile portrait"
     },
     {
-      "id": "project-1",
-      "description": "Abstract visualization of a web application",
-      "imageUrl": "https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMHRlY2h8ZW58MHx8fHwxNzU5Nzc4MTM1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract tech"
-    },
-    {
-      "id": "project-2",
-      "description": "Dashboard UI for a data analytics platform",
-      "imageUrl": "https://picsum.photos/seed/project-two/600/400",
+      "id": "alt-preventor",
+      "description": "Alternate Account Prevention",
+      "imageUrl": "https://cdn.postimage.me/2026/09/26/Manual-Ecommerce.png",
       "imageHint": "dashboard ui"
     },
     {
-      "id": "project-3",
+      "id": "manual-ecommerce",
       "description": "E-commerce store with a clean layout",
-      "imageUrl": "https://picsum.photos/seed/project-three/600/400",
+      "imageUrl": "https://cdn.postimage.me/2026/09/26/Alt-Preventor.png",
       "imageHint": "ecommerce website"
+    },
+    {
+      "id": "freewh",
+      "description": "Free Webhosting Provider site",
+      "imageUrl": "https://cdn.postimage.me/2026/09/26/FreeWH.png",
+      "imageHint": "web servers"
     },
     {
       "id": "project-4",
