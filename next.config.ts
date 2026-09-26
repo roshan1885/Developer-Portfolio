@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
         hostname: 'avatars.githubusercontent.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.postimage.me',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
