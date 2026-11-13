@@ -5,6 +5,8 @@ import ThreeCanvas from '@/components/ThreeCanvas';
 import { ArrowDown, Github, Linkedin, Mail, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { TypeAnimation } from 'react-type-animation';
+
 const stats = [
   { label: 'Projects', value: '20+' },
   { label: 'Years Experience', value: '5+' },
@@ -24,40 +26,83 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
-              <Star className="h-4 w-4 fill-accent" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background text-foreground border border-foreground/30 text-sm font-medium mb-6">
+              <Star className="h-4 w-4 fill-foreground" />
               Available for hire
             </span>
           </motion.div>
 
-          <motion.h1
-            className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl font-headline"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="bg-gradient-to-r from-foreground via-muted-foreground to-muted-foreground text-transparent bg-clip-text">
-              Roshan B.
-            </span>
-          </motion.h1>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
 
-          <motion.p
-            className="text-xl md:text-2xl text-primary font-headline max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Backend-first Full-Stack Developer &amp; Creative Technologist
-          </motion.p>
 
-          <motion.p
-            className="max-w-xl mx-auto text-muted-foreground md:text-lg leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Building scalable systems, AI automation, and creative technology solutions that make an impact.
-          </motion.p>
+
+
+            <TypeAnimation
+              sequence={["Roshan B."]}
+              cursor={false}
+
+              className="mb-4 block text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl font-headline bg-gradient-to-r from-foreground via-muted-foreground to-muted-foreground text-transparent bg-clip-text"
+              wrapper="span"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            />
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.8 }}>
+
+
+
+
+
+
+                        <TypeAnimation
+              sequence={["Backend-first Full-Stack Developer & Creative Technologist"]}
+              cursor={false}
+
+              className="mb-4 block text-xl md:text-2xl text-primary font-headline max-w-2xl mx-auto"
+              wrapper="p"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            />
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.5 }}>
+            <TypeAnimation
+              sequence={["Building scalable systems, AI automation, and creative technology solutions that make an impact."]}
+              cursor={false}
+              className="mb-8 block max-w-xl mx-auto text-muted-foreground md:text-lg leading-relaxed"
+              wrapper="p"
+            />
+          </motion.div>
 
           <motion.div
             className="flex justify-center gap-8 md:gap-16 pt-4"
