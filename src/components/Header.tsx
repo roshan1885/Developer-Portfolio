@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { AnimatedMenuIcon } from './AnimatedMenuIcon';
+import { ThemeToggle } from './ThemeToggle';
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
@@ -28,17 +29,18 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/60 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex items-center">
-          <a href="#" className="mr-6 flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-accent" />
-            <span className="font-bold font-headline">Roshan</span>
+          <a href="#" className="mr-6 flex items-center space-x-2" aria-label="Roshan Homepage">
+            <Code2 className="h-6 w-6 text-accent" aria-hidden="true" />
+            <span className="font-bold font-headline">Roshan B.</span>
           </a>
         </div>
         
         {isMobile ? (
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end gap-4">
+            <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <AnimatedMenuIcon 
@@ -63,6 +65,7 @@ export default function Header() {
             {NAV_LINKS.map((link) => (
               <NavLink key={link.href} {...link} />
             ))}
+            <ThemeToggle />
           </nav>
         )}
       </div>

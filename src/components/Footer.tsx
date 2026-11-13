@@ -2,10 +2,10 @@ import { Github, Linkedin, Mail, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/roshan1885', 'aria-label': 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/roshanb08', 'aria-label': 'LinkedIn' },
-  { icon: X, href: 'https://x.com/roshan_b08', 'aria-label': 'X/Twitter' },
-  { icon: Mail, href: 'mailto:contact@roshan.is-a.dev', 'aria-label': 'Email' },
+  { icon: Github, href: 'https://github.com/roshan1885', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/roshanb08', label: 'LinkedIn' },
+  { icon: X, href: 'https://x.com/roshan_b08', label: 'X/Twitter' },
+  { icon: Mail, href: 'mailto:contact@roshan.is-a.dev', label: 'Email' },
 ];
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex items-center gap-2">
           {socialLinks.map((link, index) => (
             <Button key={index} variant="ghost" size="icon" asChild>
-              <a href={link.href} aria-label={link['aria-label']}>
+              <a href={link.href} aria-label={link.label}>
                 <link.icon className="h-5 w-5" />
               </a>
             </Button>
@@ -28,3 +28,4 @@ export default function Footer() {
     </footer>
   );
 }
+

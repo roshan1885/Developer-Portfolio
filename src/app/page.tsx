@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow" id="main-content">
         <HeroSection />
         <div className="container mx-auto px-4 md:px-6 space-y-20 md:space-y-32">
           <AnimatedSection>

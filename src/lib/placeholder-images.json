@@ -3,26 +3,22 @@
     {
       "id": "profile-picture",
       "description": "A portrait of the developer",
-      "imageUrl": "https://avatars.githubusercontent.com/u/81822450?v=4",
-      "imageHint": "profile portrait"
+      "imageUrl": "/images/avatar.png","imageHint": "profile portrait"
     },
     {
       "id": "alt-preventor",
       "description": "Alternate Account Prevention",
-      "imageUrl": "https://cdn.postimage.me/2026/09/26/Manual-Ecommerce.png",
-      "imageHint": "dashboard ui"
+      "imageUrl": "/images/alt-preventor.png","imageHint": "dashboard ui"
     },
     {
       "id": "manual-ecommerce",
       "description": "E-commerce store with a clean layout",
-      "imageUrl": "https://cdn.postimage.me/2026/09/26/Alt-Preventor.png",
-      "imageHint": "ecommerce website"
+      "imageUrl": "/images/manual-ecommerce.png","imageHint": "ecommerce website"
     },
     {
       "id": "freewh",
       "description": "Free Webhosting Provider site",
-      "imageUrl": "https://cdn.postimage.me/2026/09/26/FreeWH.png",
-      "imageHint": "web servers"
+      "imageUrl": "/images/freewh.png","imageHint": "web servers"
     },
     {
       "id": "project-4",

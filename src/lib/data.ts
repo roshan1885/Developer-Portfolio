@@ -17,7 +17,7 @@ const getImage = (id: string): ImagePlaceholder => {
     // Fallback image
     return {
       id: 'fallback',
-      imageUrl: 'https://picsum.photos/seed/fallback/600/400',
+      imageUrl: '/images/placeholder.png',
       description: 'A placeholder image',
       imageHint: 'abstract'
     };
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     image: {
       id: 'alt-preventor',
       description: 'Alternate Account Prevention',
-      imageUrl: 'https://cdn.postimage.me/2026/09/26/Alt-Preventor.png',
+      imageUrl: '/images/alt-preventor.png',
       imageHint: 'dashboard ui',
     },
     liveUrl: '#',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     image: {
       id: 'manual-ecommerce',
       description: 'E-commerce store with a clean layout',
-      imageUrl: 'https://cdn.postimage.me/2026/09/26/Manual-Ecommerce.png',
+      imageUrl: '/images/manual-ecommerce.png',
       imageHint: 'ecommerce website',
     },
     liveUrl: 'https://manual-ecommerce.vercel.app',
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     image: {
       id: 'freewh',
       description: 'Free Webhosting Provider site',
-      imageUrl: 'https://cdn.postimage.me/2026/09/26/FreeWH.png',
+      imageUrl: '/images/freewh.png',
       imageHint: 'web servers',
     },
     liveUrl: 'https://freewh.in.eu.org',

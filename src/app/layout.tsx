@@ -1,13 +1,34 @@
 import type { Metadata } from 'next';
-import { Toaster } from '@/components/ui/toaster';
-
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { WithThemeProvider } from './with-theme';
 import './globals.css';
 
+const inter = Inter({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'],
+  variable: '--font-headline',
+});
+
 export const metadata: Metadata = {
-  title: 'Roshan',
-  description: 'A portfolio by a Multidisciplinary Developer',
-  icons: {
-    icon: '/favicon.ico',
+  title: 'Roshan B. | Backend Developer & Creative Technologist',
+  description: 'Portfolio of Roshan B., a backend-first full-stack developer specializing in scalable systems, AI automation, and creative technology.',
+  keywords: ['developer', 'backend', 'full-stack', 'portfolio', 'web development', 'AI', 'machine learning'],
+  authors: [{ name: 'Roshan B.' }],
+  creator: 'Roshan B.',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://roshan.is-a.dev',
+    siteName: 'Roshan B. Portfolio',
+    title: 'Roshan B. | Backend Developer & Creative Technologist',
+    description: 'Portfolio of Roshan B., a backend-first full-stack developer specializing in scalable systems, AI automation, and creative technology.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Roshan B. | Backend Developer & Creative Technologist',
+    description: 'Portfolio of Roshan B., a backend-first full-stack developer.',
+    creator: '@roshan_b08',
   },
 };
 
@@ -17,29 +38,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-
-      <body className="font-body antialiased">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head />
+      <body className={`${inter.className} ${spaceGrotesk.variable} font-body antialiased`}>
+        <WithThemeProvider>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-background focus:text-foreground">
+          Skip to main content
+        </a>
         {children}
-        <Toaster />
+        </WithThemeProvider>
       </body>
     </html>
   );
 }
+
