@@ -4,25 +4,32 @@
 
 @layer base {
   :root {
-    --background: 215 30% 18%; /* #1E293B */
-    --foreground: 0 0% 98%;
-    --card: 215 28% 23%;
-    --card-foreground: 0 0% 98%;
-    --popover: 215 30% 18%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 215 16% 68%; /* #94A3B4 */
-    --primary-foreground: 215 30% 11%;
-    --secondary: 215 28% 23%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 215 28% 23%;
+    --background: 222 47% 11%;
+    /* #0F172A - Deep Navy */
+    --foreground: 190 100% 95%;
+    --card: 222 47% 15%;
+    --card-foreground: 190 100% 95%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 190 100% 95%;
+
+    --primary: 199 89% 62%;
+    /* #22D3EE - Cyan */
+    --primary-hover: 199 89% 52%;
+    /* Slightly darker cyan for hover */
+    --primary-foreground: 222 47% 5%;
+    --secondary: 222 47% 18%;
+    --muted: 222 47% 18%;
     --muted-foreground: 215 5% 53%;
-    --accent: 267 92% 66%; /* #A855F7 */
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 215 28% 28%;
-    --input: 215 28% 28%;
-    --ring: 267 92% 70%;
+    --accent: 199 89% 55%;
+    /* Muted cyan - closer to primary, less bright */
+    --accent-hover: 199 89% 45%;
+    /* Slightly darker for hover */
+    --accent-foreground: 222 47% 5%;
+    /* Black text for accent hover */
+    --border: 222 47% 20%;
+    /* Subtle border for dark theme */
+    --ring: 199 89% 62%;
+    /* Cyan focus ring matching primary */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -41,24 +48,30 @@
 
   .light {
     --background: 0 0% 100%;
-    --foreground: 215 30% 11%;
+    --foreground: 222 47% 11%;
+    /* Navy */
     --card: 0 0% 100%;
-    --card-foreground: 215 30% 11%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 11%;
-    --primary: 215 30% 25%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 215 16% 90%;
-    --secondary-foreground: 215 30% 11%;
-    --muted: 215 16% 90%;
-    --muted-foreground: 215 16% 45%;
-    --accent: 267 92% 66%;
-    --accent-foreground: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 199 89% 62%;
+    /* #22D3EE - Cyan */
+    --primary-hover: 199 89% 52%;
+    /* Slightly darker cyan for hover */
+    --primary-foreground: 222 47% 5%;
+    --secondary: 222 47% 90%;
+    --muted: 222 47% 90%;
+    --muted-foreground: 222 47% 45%;
+    --accent: 199 89% 55%;
+    /* Muted cyan - closer to primary */
+    --accent-hover: 199 89% 45%;
+    --accent-foreground: 222 47% 5%;
+    /* Black text for accent hover */
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 16% 85%;
-    --input: 215 16% 85%;
-    --ring: 267 92% 70%;
+    --input: 222 47% 85%;
+    --border: 222 47% 85%;
+    /* Subtle border for light theme */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -80,6 +93,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -153,5 +167,31 @@
 
   .menu.active svg path:nth-child(3) {
     --offset: 58px;
+  }
+}
+
+@layer utilities {
+  .hover-primary {
+    @apply transition-colors duration-200;
+  }
+
+  .hover-primary:hover {
+    color: hsl(var(--primary-hover));
+  }
+
+  .bg-hover-primary:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+
+  .hover-accent {
+    @apply transition-colors duration-200;
+  }
+
+  .hover-accent:hover {
+    color: hsl(var(--accent-hover));
+  }
+
+  .bg-hover-accent:hover {
+    background-color: hsl(var(--accent-hover));
   }
 }

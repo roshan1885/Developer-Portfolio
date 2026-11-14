@@ -32,7 +32,7 @@ const ThreeCanvas = () => {
     // Theme-aware colors
     const particleColor = isLight ? 0x1a1a2e : 0xe2e8f0;
     const particleGlowColor = isLight ? 0x0f172a : 0xa855f7;
-    const connectionColor = isLight ? 0x64748b : 0x334155;
+    const connectionColor = isLight ? 0x64748b : 0x6366f1;
 
     // Particles - reduced for performance
     const particlesCount = 600;
@@ -147,7 +147,7 @@ const ThreeCanvas = () => {
     const connectionMaterial = new THREE.LineBasicMaterial({
       color: connectionColor,
       transparent: true,
-      opacity: isLight ? 0.3 : 0.08,
+      opacity: isLight ? 0.3 : 0.25,
       blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
     });
     const connectionsMesh = new THREE.LineSegments(connectionGeometry, connectionMaterial);

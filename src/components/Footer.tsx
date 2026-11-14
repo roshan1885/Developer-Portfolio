@@ -10,16 +10,16 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full py-6 mt-24 md:mt-32 border-t border-border/40">
+    <footer className="w-full py-4 md:py-6 mt-20 md:mt-24 border-t border-border/10">
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           © {new Date().getFullYear()} Roshan. All rights reserved.
         </p>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {socialLinks.map((link, index) => (
             <Button key={index} variant="ghost" size="icon" asChild>
               <a href={link.href} aria-label={link.label}>
-                <link.icon className="h-5 w-5" />
+                <link.icon className="h-4 sm:h-5 w-4 sm:w-5" />
               </a>
             </Button>
           ))}
