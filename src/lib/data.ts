@@ -23,8 +23,7 @@ const getImage = (id: string): ImagePlaceholder => {
     };
   }
   return img;
-}
-
+};
 export const projects: Project[] = [
   {
     id: 'proj-1',
@@ -34,11 +33,10 @@ export const projects: Project[] = [
     image: {
       id: 'alt-preventor',
       description: 'Alternate Account Prevention',
-      imageUrl: '/images/alt-preventor.png',
+      imageUrl: '/images/Alt-Preventor.png',
       imageHint: 'dashboard ui',
     },
     liveUrl: '#',
-    githubUrl: '#',
   },
   {
     id: 'proj-2',
@@ -48,7 +46,7 @@ export const projects: Project[] = [
     image: {
       id: 'manual-ecommerce',
       description: 'E-commerce store with a clean layout',
-      imageUrl: '/images/manual-ecommerce.png',
+      imageUrl: '/images/Manual-Ecommerce.png',
       imageHint: 'ecommerce website',
     },
     liveUrl: 'https://manual-ecommerce.vercel.app',
@@ -69,10 +67,29 @@ export const projects: Project[] = [
     image: {
       id: 'freewh',
       description: 'Free Webhosting Provider site',
-      imageUrl: '/images/freewh.png',
+      imageUrl: '/images/FreeWH.png',
       imageHint: 'web servers',
     },
     liveUrl: 'https://freewh.in.eu.org',
-    githubUrl: '#',
+  },
+  {
+    id: 'proj-4',
+    title: 'Roblox Game Site',
+    description: 'A fully customizable site for a Roblox game, allowing players to access game-related information, updates, and community features in one convenient location. It also offers an organised user management and staff dashboard for efficient administration and moderation of the game community.',
+    techStack: [
+      "TypeScript",
+      "NodeJS",
+      "PostgreSQL",
+      "Vite",
+      "Supabase",
+    ],
+    image: {
+      id: 'roblox-game-site',
+      description: 'Roblox Game Site',
+      imageUrl: '/images/Roblox-Game-Site.png',
+      imageHint: 'roblox game website',
+    },
+    liveUrl: 'https://roblox-game-site-psi.vercel.app',
+    githubUrl: 'https://github.com/roshan1885/roblox-game-site',
   },
 ];
